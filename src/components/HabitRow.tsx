@@ -9,7 +9,6 @@ interface HabitRowProps {
 export const HabitRow = (props: HabitRowProps) => {
   return (
     <tr>
-      <td>{props.habit.id}</td>
       <td>{props.habit.name}</td>
       {Object.entries(props.habit.completedDays).map((day) => {
         const dayNum = day[0];

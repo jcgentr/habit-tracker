@@ -23,7 +23,7 @@ export const AddHabit = (props: AddHabitProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="addNewHabit">
       <label htmlFor="input-box">Enter new habit: </label>
       <input type="text" id="input-box" value={text} onChange={handleChange} />
       <button style={{ cursor: "pointer" }} type="submit">

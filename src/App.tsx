@@ -59,6 +59,18 @@ export default function App() {
     setHabits(newHabits);
   };
 
+  const handleClearAll = () => {
+    localStorage.setItem(
+      `habits-${new Date().toISOString()}`,
+      JSON.stringify(habits)
+    );
+    setHabits(
+      habits.map((habit) => {
+        return { ...habit, completedDays: defaultCompletedDays };
+      })
+    );
+  };
+
   return (
     <div>
       <h1>Your 30 Day Habit Tracker</h1>
@@ -78,8 +90,7 @@ export default function App() {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Habit Name</th>
+                <th></th>
                 <th>1</th>
                 <th>2</th>
                 <th>3</th>
@@ -125,7 +136,8 @@ export default function App() {
           </table>
         </div>
       )}
-      <div>
+      <div style={{ marginTop: "10px" }}>
+        <button onClick={handleClearAll}>Clear All</button>
         <h3>Still Todo:</h3>
         <ul>
           <li>
@@ -142,6 +154,15 @@ export default function App() {
               </li>
             </ul>
           </li>
+          <li>
+            <s>transition from codesandbox to vite app</s>
+          </li>
+          <li>
+            <s>push to github and netlify</s>
+          </li>
+          <li>
+            <s>clear all button</s>
+          </li>
           <li>add delete habit functionality</li>
           <li>adjust days based on current month</li>
           <li>improve styling</li>
@@ -149,8 +170,10 @@ export default function App() {
           <li>load current month and highlight today when page loads</li>
           <li>improve performance (completion re-renders whole list)</li>
           <li>display statistics to habits</li>
-          <li>transition from codesandbox to vite app</li>
-          <li>push to github and netlify</li>
+          <li>be able to reorder rows</li>
+          <li>different color mode switcher</li>
+          <li>on hover to see where your cursor is lined up with</li>
+          <li>add ability to rearrange habit rows</li>
         </ul>
       </div>
     </div>
