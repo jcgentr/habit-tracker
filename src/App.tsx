@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { HabitRow } from "./components/HabitRow";
 import { AddHabit } from "./components/AddHabit";
-import React from "react";
 
 interface CompletedDays {
   [key: number]: boolean;
@@ -71,9 +70,14 @@ export default function App() {
     );
   };
 
+  const handleDeleteHabit = (habitId: number) => {
+    console.log("deleting habit ", habitId);
+    setHabits(habits.filter((h) => h.id !== habitId));
+  };
+
   return (
     <div>
-      <h1>Your 30 Day Habit Tracker</h1>
+      <h1>Your 31 Day Habit Tracker</h1>
       <div>
         <AddHabit handleAddHabit={handleAddHabit} />
       </div>
@@ -130,6 +134,7 @@ export default function App() {
                   key={habit.id}
                   habit={habit}
                   completeDay={completeDay}
+                  handleDeleteHabit={handleDeleteHabit}
                 />
               ))}
             </tbody>
@@ -140,40 +145,12 @@ export default function App() {
         <button onClick={handleClearAll}>Clear All</button>
         <h3>Still Todo:</h3>
         <ul>
-          <li>
-            <s>add habit feature</s>
-          </li>
-          <li>
-            <s>add current month and day numbers at top of list</s>
-          </li>
-          <li>
-            <s>save data to localStorage and fetch on page load</s>
-            <ul>
-              <li>
-                Note: localStorage has max size of 5MB per app per browser
-              </li>
-            </ul>
-          </li>
-          <li>
-            <s>transition from codesandbox to vite app</s>
-          </li>
-          <li>
-            <s>push to github and netlify</s>
-          </li>
-          <li>
-            <s>clear all button</s>
-          </li>
-          <li>add delete habit functionality</li>
-          <li>adjust days based on current month</li>
-          <li>improve styling</li>
+          <li>add edit habit functionality</li>
           <li>be able to view past months' data</li>
-          <li>load current month and highlight today when page loads</li>
-          <li>improve performance (completion re-renders whole list)</li>
+          <li>highlight today when page loads</li>
           <li>display statistics to habits</li>
           <li>be able to reorder rows</li>
           <li>different color mode switcher</li>
-          <li>on hover to see where your cursor is lined up with</li>
-          <li>add ability to rearrange habit rows</li>
         </ul>
       </div>
     </div>
